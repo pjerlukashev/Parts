@@ -1,0 +1,148 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+
+       xmlns:aop="http://www.springframework.org/schema/aop"
+
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="net.proselyte.springmvc"/>
+
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+      <property name="prefix" value="/WEB-INF/pages/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <bean id="bookDAO" class="net.proselyte.springmvc.dao.MockDAO">
+    </bean>
+
+    <bean id="bookService" class="net.proselyte.springmvc.service.MockService">
+
+      <property name="dao" ref="bookDAO"/>
+    </bean>
+
+   <!-- <mvc:annotation-driven/>-->
+
+ <!-- <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" >
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+<property name="url" value="jdbc:mysql://localhost:3306/frogs?serverTimezone=Europe/Moscow"/>
+<property name="username" value="root"/>
+<property name="password" value="root"/>
+            </bean>
+
+    <bean id="hibernate5AnnotatedSessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+
+        <property name="dataSource" ref="dataSource"/>
+        <property name="annotatedClasses">
+            <list>
+                <value>net.proselyte.springmvc.model.Book</value>
+            </list>
+        </property>
+
+        <property name="hibernateProperties">
+
+            <props>
+
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+
+                <prop key="hibernate.show_sql">true</prop>
+            </props>
+
+        </property>
+
+    </bean>
+
+    <bean id="bookDAOhibernate" class="net.proselyte.springmvc.dao.bookDAOimpl">
+
+<property name="sessionFactory" value="hibernate4AnnotatedSessionFactory"/>
+
+    </bean>
+
+
+
+    <bean id="bookServicehibernate" class="net.proselyte.springmvc.service.bookServiceImpl">
+
+        <property name="bookDAOimpl" ref="bookDAOhibernate"/>
+
+            </bean>
+
+
+
+    <bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+
+        <property name="sessionFactory" value="hibernate5AnnotatedSessionFactory" />
+    </bean>-->
+
+    <bean id="propertyConfigurer"  class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+
+        <property name="location" value="classpath:/jdbc.properties" />
+
+    </bean>
+
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" >
+
+        <property name="driverClassName" value="${jdbc.driverClassName}" />
+
+        <property name="url" value="${jdbc.url}" />
+
+        <property name="username" value="${jdbc.username}" />
+
+        <property name="password" value="${jdbc.password}" />
+
+    </bean>
+
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+
+        <property name="dataSource" ref="dataSource" />
+
+        <property name="configLocation" value="classpath:/hibernate.cfg.xml" />
+
+        <property name="annotatedClasses">
+            <list>
+                <value>net.proselyte.springmvc.model.Book</value>
+            </list>
+        </property>
+
+        <property name="hibernateProperties">
+
+            <props>
+
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+
+            </props>
+
+        </property>
+
+    </bean>
+
+
+    <tx:annotation-driven transaction-manager="txManager" />
+
+
+
+    <bean id="txManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+
+        <property name="sessionFactory" ref="sessionFactory" />
+
+    </bean>
+
+    <bean id="bookDAOImpl" class="net.proselyte.springmvc.dao.bookDAOimpl">
+
+        <property name="sessionFactory" ref="sessionFactory" />
+
+    </bean>
+
+
+
+    <bean id="bookServiceImpl" class="net.proselyte.springmvc.service.bookServiceImpl">
+
+        <property name="bookDAOimpl" ref="bookDAOImpl" />
+
+    </bean>
+
+
+</beans>
