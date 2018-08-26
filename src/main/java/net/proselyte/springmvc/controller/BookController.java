@@ -7,14 +7,14 @@ import net.proselyte.springmvc.service.Service;
 import net.proselyte.springmvc.service.bookServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.support.PagedListHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 @Controller
 public class BookController {
@@ -57,13 +57,38 @@ public class BookController {
     }
 
     @RequestMapping(value="books", method= RequestMethod.GET )
-    public  String listBooks(Model model){
+    public  String listBooks(@RequestParam (required = false) Integer page,  Model model){
 
         model.addAttribute("command", new Book());
 
-        model.addAttribute("listBooks", this.bookService.getAllBooks());
+      //  model.addAttribute("listBooks", this.bookService.getAllBooks());
 
-       return  "books";
+        List<Book> users = bookService.getAllBooks();
+
+        PagedListHolder<Book> pagedListHolder = new PagedListHolder<Book>(users);
+        pagedListHolder.setPageSize(5);
+        model.addAttribute("maxPages", pagedListHolder.getPageCount());
+
+
+        if(page==null || page < 1 || page > pagedListHolder.getPageCount())
+            page = 1;
+
+
+        model.addAttribute("page", page);
+
+        if(page>pagedListHolder.getPageCount()){
+            pagedListHolder.setPage(page);
+            model.addAttribute("listBooks", pagedListHolder.getPageList());
+        }
+
+        else if(page <= pagedListHolder.getPageCount()) {
+
+            pagedListHolder.setPage(page-1);
+            model.addAttribute("listBooks", pagedListHolder.getPageList());
+        }
+
+
+        return  "books";
 
     }
 
