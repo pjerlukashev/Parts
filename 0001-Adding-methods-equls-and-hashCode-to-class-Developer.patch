@@ -1,0 +1,506 @@
+From 69d231b6d2bd3246db482b0609d6ba2ca2eada3b Mon Sep 17 00:00:00 2001
+From: Petr Lukashev <lukashev_pjer@mail.ru>
+Date: Sun, 26 Aug 2018 14:11:18 +0300
+Subject: [PATCH] Adding methods equls and hashCode to class Developer
+
+---
+ .idea/workspace.xml                           | 254 +++++++-----------
+ .../proselyte/springmvc/model/Developer.java  |  40 ++-
+ 2 files changed, 133 insertions(+), 161 deletions(-)
+
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+index 838c4fc..2b567be 100644
+--- a/.idea/workspace.xml
++++ b/.idea/workspace.xml
+@@ -7,8 +7,7 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="4685069e-6f23-4be9-a3f1-7fa2e47668ca" name="Default" comment="">
+-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/net/proselyte/springmvc/model/Team.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/proselyte/springmvc/model/Team.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/net/proselyte/springmvc/model/Developer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/proselyte/springmvc/model/Developer.java" afterDir="false" />
+     </list>
+     <ignored path="ProselyteSpringMVC.iws" />
+     <ignored path=".idea/workspace.xml" />
+@@ -147,6 +146,18 @@
+         </counts>
+       </usages-collector>
+     </session>
++    <session id="1787157766">
++      <usages-collector id="statistics.file.extensions.open">
++        <counts>
++          <entry key="java" value="1" />
++        </counts>
++      </usages-collector>
++      <usages-collector id="statistics.file.types.open">
++        <counts>
++          <entry key="JAVA" value="1" />
++        </counts>
++      </usages-collector>
++    </session>
+   </component>
+   <component name="FavoritesManager">
+     <favorites_list name="ProselyteSpringMVC" />
+@@ -168,7 +179,7 @@
+       <file pinned="false" current-in-tab="false">
+         <entry file="file://$PROJECT_DIR$/src/main/java/net/proselyte/springmvc/model/Book.java">
+           <provider selected="true" editor-type-id="text-editor">
+-            <state relative-caret-position="-53">
++            <state relative-caret-position="119">
+               <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
+               <folding>
+                 <element signature="imports" expanded="true" />
+@@ -189,49 +200,51 @@
+       <file pinned="false" current-in-tab="false">
+         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/books.jsp">
+           <provider selected="true" editor-type-id="text-editor">
+-            <state relative-caret-position="223">
++            <state relative-caret-position="1088">
+               <caret line="64" column="27" selection-start-line="64" selection-start-column="27" selection-end-line="64" selection-end-column="27" />
+             </state>
+           </provider>
+         </entry>
+       </file>
+       <file pinned="false" current-in-tab="false">
+-        <entry file="file://$PROJECT_DIR$/src/main/java/net/proselyte/springmvc/model/Project.java">
+-          <provider selected="true" editor-type-id="text-editor">
+-            <state relative-caret-position="34">
+-              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+-            </state>
+-          </provider>
+-        </entry>
+-      </file>
+-      <file pinned="false" current-in-tab="false">
+-        <entry file="file://$PROJECT_DIR$/src/main/java/net/proselyte/springmvc/model/Developer.java">
++        <entry file="file://$PROJECT_DIR$/src/main/java/net/proselyte/springmvc/model/Team.java">
+           <provider selected="true" editor-type-id="text-editor">
+-            <state relative-caret-position="34">
+-              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
++            <state relative-caret-position="170">
++              <caret line="12" column="5" lean-forward="true" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
++              <folding>
++                <element signature="e#177#178#0" expanded="true" />
++                <element signature="e#208#209#0" expanded="true" />
++              </folding>
+             </state>
+           </provider>
+         </entry>
+       </file>
+       <file pinned="false" current-in-tab="true">
+-        <entry file="file://$PROJECT_DIR$/src/main/java/net/proselyte/springmvc/model/Team.java">
++        <entry file="file://$PROJECT_DIR$/src/main/java/net/proselyte/springmvc/model/Developer.java">
+           <provider selected="true" editor-type-id="text-editor">
+-            <state relative-caret-position="136">
+-              <caret line="10" column="33" lean-forward="true" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
++            <state relative-caret-position="505">
++              <caret line="92" column="5" selection-start-line="92" selection-start-column="5" selection-end-line="92" selection-end-column="5" />
+               <folding>
+-                <element signature="e#184#185#0" expanded="true" />
+-                <element signature="e#232#233#0" expanded="true" />
+-                <element signature="e#272#273#0" expanded="true" />
+-                <element signature="e#307#308#0" expanded="true" />
+-                <element signature="e#340#341#0" expanded="true" />
+-                <element signature="e#390#391#0" expanded="true" />
+-                <element signature="e#434#435#0" expanded="true" />
+-                <element signature="e#493#494#0" expanded="true" />
++                <element signature="e#507#508#0" expanded="true" />
+                 <element signature="e#539#540#0" expanded="true" />
+-                <element signature="e#603#604#0" expanded="true" />
+-                <element signature="e#652#653#0" expanded="true" />
+-                <element signature="e#682#683#0" expanded="true" />
+-                <element signature="e#728#729#0" expanded="true" />
++                <element signature="e#589#590#0" expanded="true" />
++                <element signature="e#631#632#0" expanded="true" />
++                <element signature="e#666#667#0" expanded="true" />
++                <element signature="e#697#698#0" expanded="true" />
++                <element signature="e#745#746#0" expanded="true" />
++                <element signature="e#785#786#0" expanded="true" />
++                <element signature="e#821#822#0" expanded="true" />
++                <element signature="e#853#854#0" expanded="true" />
++                <element signature="e#903#904#0" expanded="true" />
++                <element signature="e#945#946#0" expanded="true" />
++                <element signature="e#979#980#0" expanded="true" />
++                <element signature="e#1008#1009#0" expanded="true" />
++                <element signature="e#1053#1054#0" expanded="true" />
++                <element signature="e#1089#1090#0" expanded="true" />
++                <element signature="e#1118#1119#0" expanded="true" />
++                <element signature="e#1145#1146#0" expanded="true" />
++                <element signature="e#1183#1184#0" expanded="true" />
++                <element signature="e#1215#1216#0" expanded="true" />
+               </folding>
+             </state>
+           </provider>
+@@ -256,7 +269,6 @@
+               <caret line="11" column="8" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="15" />
+               <folding>
+                 <element signature="imports" expanded="true" />
+-                <element signature="e#270#285#0" expanded="true" />
+               </folding>
+             </state>
+           </provider>
+@@ -292,7 +304,6 @@
+   <component name="IdeDocumentHistory">
+     <option name="CHANGED_PATHS">
+       <list>
+-        <option value="$PROJECT_DIR$/src/main/java/net/proselyte/springmvc/model/Developer.java" />
+         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/developer.jsp" />
+         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
+         <option value="$PROJECT_DIR$/src/main/java/net/proselyte/springmvc/controller/DeveloperController.java" />
+@@ -312,6 +323,7 @@
+         <option value="$PROJECT_DIR$/src/main/java/net/proselyte/springmvc/model/Book.java" />
+         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/books.jsp" />
+         <option value="$PROJECT_DIR$/src/main/java/net/proselyte/springmvc/model/Team.java" />
++        <option value="$PROJECT_DIR$/src/main/java/net/proselyte/springmvc/model/Developer.java" />
+       </list>
+     </option>
+   </component>
+@@ -359,128 +371,55 @@
+       <foldersAlwaysOnTop value="true" />
+     </navigator>
+     <panes>
++      <pane id="PackagesPane" />
++      <pane id="AndroidView" />
++      <pane id="Scope" />
+       <pane id="ProjectPane">
+         <subPane>
+           <expand>
+             <path>
+-              <item name="ProselyteSpringMVC-2" type="b2602c69:ProjectViewProjectNode" />
+-              <item name="ProselyteSpringMVC-2" type="462c0819:PsiDirectoryNode" />
+-            </path>
+-            <path>
+-              <item name="ProselyteSpringMVC-2" type="b2602c69:ProjectViewProjectNode" />
+-              <item name="ProselyteSpringMVC-2" type="462c0819:PsiDirectoryNode" />
+-              <item name="src" type="462c0819:PsiDirectoryNode" />
+-            </path>
+-            <path>
+-              <item name="ProselyteSpringMVC-2" type="b2602c69:ProjectViewProjectNode" />
+-              <item name="ProselyteSpringMVC-2" type="462c0819:PsiDirectoryNode" />
+-              <item name="src" type="462c0819:PsiDirectoryNode" />
+-              <item name="main" type="462c0819:PsiDirectoryNode" />
++              <item name="crudBooks" type="b2602c69:ProjectViewProjectNode" />
++              <item name="crudBooks" type="462c0819:PsiDirectoryNode" />
+             </path>
+             <path>
+-              <item name="ProselyteSpringMVC-2" type="b2602c69:ProjectViewProjectNode" />
+-              <item name="ProselyteSpringMVC-2" type="462c0819:PsiDirectoryNode" />
++              <item name="crudBooks" type="b2602c69:ProjectViewProjectNode" />
++              <item name="crudBooks" type="462c0819:PsiDirectoryNode" />
+               <item name="src" type="462c0819:PsiDirectoryNode" />
+-              <item name="main" type="462c0819:PsiDirectoryNode" />
+-              <item name="java" type="462c0819:PsiDirectoryNode" />
+             </path>
+             <path>
+-              <item name="ProselyteSpringMVC-2" type="b2602c69:ProjectViewProjectNode" />
+-              <item name="ProselyteSpringMVC-2" type="462c0819:PsiDirectoryNode" />
++              <item name="crudBooks" type="b2602c69:ProjectViewProjectNode" />
++              <item name="crudBooks" type="462c0819:PsiDirectoryNode" />
+               <item name="src" type="462c0819:PsiDirectoryNode" />
+               <item name="main" type="462c0819:PsiDirectoryNode" />
+-              <item name="java" type="462c0819:PsiDirectoryNode" />
+-              <item name="springmvc" type="462c0819:PsiDirectoryNode" />
+             </path>
+             <path>
+-              <item name="ProselyteSpringMVC-2" type="b2602c69:ProjectViewProjectNode" />
+-              <item name="ProselyteSpringMVC-2" type="462c0819:PsiDirectoryNode" />
++              <item name="crudBooks" type="b2602c69:ProjectViewProjectNode" />
++              <item name="crudBooks" type="462c0819:PsiDirectoryNode" />
+               <item name="src" type="462c0819:PsiDirectoryNode" />
+               <item name="main" type="462c0819:PsiDirectoryNode" />
+               <item name="java" type="462c0819:PsiDirectoryNode" />
+-              <item name="springmvc" type="462c0819:PsiDirectoryNode" />
+-              <item name="controller" type="462c0819:PsiDirectoryNode" />
+             </path>
+             <path>
+-              <item name="ProselyteSpringMVC-2" type="b2602c69:ProjectViewProjectNode" />
+-              <item name="ProselyteSpringMVC-2" type="462c0819:PsiDirectoryNode" />
++              <item name="crudBooks" type="b2602c69:ProjectViewProjectNode" />
++              <item name="crudBooks" type="462c0819:PsiDirectoryNode" />
+               <item name="src" type="462c0819:PsiDirectoryNode" />
+               <item name="main" type="462c0819:PsiDirectoryNode" />
+               <item name="java" type="462c0819:PsiDirectoryNode" />
+               <item name="springmvc" type="462c0819:PsiDirectoryNode" />
+-              <item name="dao" type="462c0819:PsiDirectoryNode" />
+             </path>
+             <path>
+-              <item name="ProselyteSpringMVC-2" type="b2602c69:ProjectViewProjectNode" />
+-              <item name="ProselyteSpringMVC-2" type="462c0819:PsiDirectoryNode" />
++              <item name="crudBooks" type="b2602c69:ProjectViewProjectNode" />
++              <item name="crudBooks" type="462c0819:PsiDirectoryNode" />
+               <item name="src" type="462c0819:PsiDirectoryNode" />
+               <item name="main" type="462c0819:PsiDirectoryNode" />
+               <item name="java" type="462c0819:PsiDirectoryNode" />
+               <item name="springmvc" type="462c0819:PsiDirectoryNode" />
+               <item name="model" type="462c0819:PsiDirectoryNode" />
+             </path>
+-            <path>
+-              <item name="ProselyteSpringMVC-2" type="b2602c69:ProjectViewProjectNode" />
+-              <item name="ProselyteSpringMVC-2" type="462c0819:PsiDirectoryNode" />
+-              <item name="src" type="462c0819:PsiDirectoryNode" />
+-              <item name="main" type="462c0819:PsiDirectoryNode" />
+-              <item name="java" type="462c0819:PsiDirectoryNode" />
+-              <item name="springmvc" type="462c0819:PsiDirectoryNode" />
+-              <item name="service" type="462c0819:PsiDirectoryNode" />
+-            </path>
+-            <path>
+-              <item name="ProselyteSpringMVC-2" type="b2602c69:ProjectViewProjectNode" />
+-              <item name="ProselyteSpringMVC-2" type="462c0819:PsiDirectoryNode" />
+-              <item name="src" type="462c0819:PsiDirectoryNode" />
+-              <item name="main" type="462c0819:PsiDirectoryNode" />
+-              <item name="resources" type="462c0819:PsiDirectoryNode" />
+-            </path>
+-            <path>
+-              <item name="ProselyteSpringMVC-2" type="b2602c69:ProjectViewProjectNode" />
+-              <item name="ProselyteSpringMVC-2" type="462c0819:PsiDirectoryNode" />
+-              <item name="src" type="462c0819:PsiDirectoryNode" />
+-              <item name="main" type="462c0819:PsiDirectoryNode" />
+-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+-            </path>
+-            <path>
+-              <item name="ProselyteSpringMVC-2" type="b2602c69:ProjectViewProjectNode" />
+-              <item name="ProselyteSpringMVC-2" type="462c0819:PsiDirectoryNode" />
+-              <item name="src" type="462c0819:PsiDirectoryNode" />
+-              <item name="main" type="462c0819:PsiDirectoryNode" />
+-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+-            </path>
+-            <path>
+-              <item name="ProselyteSpringMVC-2" type="b2602c69:ProjectViewProjectNode" />
+-              <item name="ProselyteSpringMVC-2" type="462c0819:PsiDirectoryNode" />
+-              <item name="src" type="462c0819:PsiDirectoryNode" />
+-              <item name="main" type="462c0819:PsiDirectoryNode" />
+-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+-              <item name="pages" type="462c0819:PsiDirectoryNode" />
+-            </path>
+-            <path>
+-              <item name="ProselyteSpringMVC-2" type="b2602c69:ProjectViewProjectNode" />
+-              <item name="Scratches and Consoles" type="1a2a3e82:ScratchProjectViewPane$MyProjectNode" />
+-            </path>
+-            <path>
+-              <item name="ProselyteSpringMVC-2" type="b2602c69:ProjectViewProjectNode" />
+-              <item name="Scratches and Consoles" type="1a2a3e82:ScratchProjectViewPane$MyProjectNode" />
+-              <item name="Database Consoles" type="d62648e6:ScratchProjectViewPane$MyRootNode" />
+-            </path>
+-            <path>
+-              <item name="ProselyteSpringMVC-2" type="b2602c69:ProjectViewProjectNode" />
+-              <item name="Scratches and Consoles" type="1a2a3e82:ScratchProjectViewPane$MyProjectNode" />
+-              <item name="Database Consoles" type="d62648e6:ScratchProjectViewPane$MyRootNode" />
+-              <item name="7a2bff70-e834-43c5-bc10-48a983f08d7f" type="1e004dc1:ScratchProjectViewPane$MyRootNode$1$1" />
+-            </path>
+           </expand>
+           <select />
+         </subPane>
+       </pane>
+-      <pane id="Scope" />
+-      <pane id="AndroidView" />
+-      <pane id="PackagesPane" />
+     </panes>
+   </component>
+   <component name="PropertiesComponent">
+@@ -885,12 +824,12 @@
+     <servers />
+   </component>
+   <component name="TimeTrackingManager">
+-    <option name="totallyTimeSpent" value="109324000" />
++    <option name="totallyTimeSpent" value="109335000" />
+   </component>
+   <component name="ToolWindowManager">
+-    <frame x="-36" y="7" width="1366" height="769" extended-state="0" />
++    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+     <layout>
+-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2825421" />
++      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.28366113" />
+       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+       <window_info id="Image Layers" order="2" />
+       <window_info id="UI Designer" order="3" />
+@@ -997,9 +936,6 @@
+       <provider selected="true" editor-type-id="text-editor">
+         <state relative-caret-position="427">
+           <caret line="53" column="27" selection-start-line="53" selection-start-column="27" selection-end-line="53" selection-end-column="30" />
+-          <folding>
+-            <element signature="imports" expanded="true" />
+-          </folding>
+         </state>
+       </provider>
+     </entry>
+@@ -1007,9 +943,6 @@
+       <provider selected="true" editor-type-id="text-editor">
+         <state relative-caret-position="17">
+           <caret line="24" column="29" lean-forward="true" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="32" />
+-          <folding>
+-            <element signature="imports" expanded="true" />
+-          </folding>
+         </state>
+       </provider>
+     </entry>
+@@ -1024,9 +957,6 @@
+       <provider selected="true" editor-type-id="text-editor">
+         <state relative-caret-position="1122">
+           <caret line="83" selection-start-line="83" selection-end-line="83" />
+-          <folding>
+-            <element signature="imports" expanded="true" />
+-          </folding>
+         </state>
+       </provider>
+     </entry>
+@@ -1070,7 +1000,6 @@
+           <caret line="11" column="8" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="15" />
+           <folding>
+             <element signature="imports" expanded="true" />
+-            <element signature="e#270#285#0" expanded="true" />
+           </folding>
+         </state>
+       </provider>
+@@ -1087,7 +1016,7 @@
+     </entry>
+     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/books.jsp">
+       <provider selected="true" editor-type-id="text-editor">
+-        <state relative-caret-position="223">
++        <state relative-caret-position="1088">
+           <caret line="64" column="27" selection-start-line="64" selection-start-column="27" selection-end-line="64" selection-end-column="27" />
+         </state>
+       </provider>
+@@ -1099,16 +1028,9 @@
+         </state>
+       </provider>
+     </entry>
+-    <entry file="file://$PROJECT_DIR$/src/main/java/net/proselyte/springmvc/model/Developer.java">
+-      <provider selected="true" editor-type-id="text-editor">
+-        <state relative-caret-position="34">
+-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+-        </state>
+-      </provider>
+-    </entry>
+     <entry file="file://$PROJECT_DIR$/src/main/java/net/proselyte/springmvc/model/Book.java">
+       <provider selected="true" editor-type-id="text-editor">
+-        <state relative-caret-position="-53">
++        <state relative-caret-position="119">
+           <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
+           <folding>
+             <element signature="imports" expanded="true" />
+@@ -1118,22 +1040,40 @@
+     </entry>
+     <entry file="file://$PROJECT_DIR$/src/main/java/net/proselyte/springmvc/model/Team.java">
+       <provider selected="true" editor-type-id="text-editor">
+-        <state relative-caret-position="136">
+-          <caret line="10" column="33" lean-forward="true" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
++        <state relative-caret-position="170">
++          <caret line="12" column="5" lean-forward="true" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
++          <folding>
++            <element signature="e#177#178#0" expanded="true" />
++            <element signature="e#208#209#0" expanded="true" />
++          </folding>
++        </state>
++      </provider>
++    </entry>
++    <entry file="file://$PROJECT_DIR$/src/main/java/net/proselyte/springmvc/model/Developer.java">
++      <provider selected="true" editor-type-id="text-editor">
++        <state relative-caret-position="505">
++          <caret line="92" column="5" selection-start-line="92" selection-start-column="5" selection-end-line="92" selection-end-column="5" />
+           <folding>
+-            <element signature="e#184#185#0" expanded="true" />
+-            <element signature="e#232#233#0" expanded="true" />
+-            <element signature="e#272#273#0" expanded="true" />
+-            <element signature="e#307#308#0" expanded="true" />
+-            <element signature="e#340#341#0" expanded="true" />
+-            <element signature="e#390#391#0" expanded="true" />
+-            <element signature="e#434#435#0" expanded="true" />
+-            <element signature="e#493#494#0" expanded="true" />
++            <element signature="e#507#508#0" expanded="true" />
+             <element signature="e#539#540#0" expanded="true" />
+-            <element signature="e#603#604#0" expanded="true" />
+-            <element signature="e#652#653#0" expanded="true" />
+-            <element signature="e#682#683#0" expanded="true" />
+-            <element signature="e#728#729#0" expanded="true" />
++            <element signature="e#589#590#0" expanded="true" />
++            <element signature="e#631#632#0" expanded="true" />
++            <element signature="e#666#667#0" expanded="true" />
++            <element signature="e#697#698#0" expanded="true" />
++            <element signature="e#745#746#0" expanded="true" />
++            <element signature="e#785#786#0" expanded="true" />
++            <element signature="e#821#822#0" expanded="true" />
++            <element signature="e#853#854#0" expanded="true" />
++            <element signature="e#903#904#0" expanded="true" />
++            <element signature="e#945#946#0" expanded="true" />
++            <element signature="e#979#980#0" expanded="true" />
++            <element signature="e#1008#1009#0" expanded="true" />
++            <element signature="e#1053#1054#0" expanded="true" />
++            <element signature="e#1089#1090#0" expanded="true" />
++            <element signature="e#1118#1119#0" expanded="true" />
++            <element signature="e#1145#1146#0" expanded="true" />
++            <element signature="e#1183#1184#0" expanded="true" />
++            <element signature="e#1215#1216#0" expanded="true" />
+           </folding>
+         </state>
+       </provider>
+diff --git a/src/main/java/net/proselyte/springmvc/model/Developer.java b/src/main/java/net/proselyte/springmvc/model/Developer.java
+index 71eaea3..477dba4 100644
+--- a/src/main/java/net/proselyte/springmvc/model/Developer.java
++++ b/src/main/java/net/proselyte/springmvc/model/Developer.java
+@@ -2,12 +2,11 @@ package net.proselyte.springmvc.model;
+ 
+ public class Developer {
+ 
+-
+-
+     private String firstName;
+     private String lastName;
+     private String specialty;
+     private Integer salary;
++    private Team team;
+ 
+     public Developer() {
+     }
+@@ -51,13 +50,46 @@ public class Developer {
+         this.salary = salary;
+     }
+ 
++    public Team getTeam() {
++        return team;
++    }
++
++    public void setTeam(Team team) {
++        this.team = team;
++    }
++
++    @Override
++    public boolean equals(Object o) {
++        if (this == o) return true;
++        if (o == null || getClass() != o.getClass()) return false;
++
++        Developer developer = (Developer) o;
++
++        if (firstName != null ? !firstName.equals(developer.firstName) : developer.firstName != null) return false;
++        if (lastName != null ? !lastName.equals(developer.lastName) : developer.lastName != null) return false;
++        if (specialty != null ? !specialty.equals(developer.specialty) : developer.specialty != null) return false;
++        if (salary != null ? !salary.equals(developer.salary) : developer.salary != null) return false;
++        return team != null ? team.equals(developer.team) : developer.team == null;
++
++    }
++
++    @Override
++    public int hashCode() {
++        int result = firstName != null ? firstName.hashCode() : 0;
++        result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
++        result = 31 * result + (specialty != null ? specialty.hashCode() : 0);
++        result = 31 * result + (salary != null ? salary.hashCode() : 0);
++        result = 31 * result + (team != null ? team.hashCode() : 0);
++        return result;
++    }
++
+     @Override
+     public String toString() {
+         return "First Name: " + firstName +
+                 "\nLast Name: " + lastName +
+                 "\nSpecialty: " + specialty +
+-                "\nSalary: " + salary;
++                "\nSalary: " + salary +
++                "\nTeam: " + team.getTeamName();
+     }
+ 
+-
+ }
+-- 
+2.17.1.windows.2
+
