@@ -1,5 +1,6 @@
 package net.proselyte.springmvc.dao;
 
+import net.proselyte.springmvc.BookNotFoundException;
 import net.proselyte.springmvc.model.Book;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -90,5 +91,29 @@ public class bookDAOimpl implements DAO {
 
 
         return books;
+    }
+
+    @Override
+    public Book findBookByTitle(String title) {
+
+        Book book= null;
+
+        Session session = this.sessionFactory.getCurrentSession();
+
+        try {
+
+            List<Book> bookList = session.createQuery("from Book  where title = :title").setString("title",title).list();
+
+            if(bookList.size()==0){
+                throw new BookNotFoundException("Book with title " + title + " not found");
+            }else{
+
+             book=bookList.get(0);
+
+            }
+        } catch (BookNotFoundException e){
+   e.printStackTrace();
+        }
+        return book;
     }
 }

@@ -175,6 +175,17 @@
 
 </form:form>
 
+
+<h1 >Search a book by title:</h1>
+
+<c:url value="/search" var="searchAction" />
+<form:form action="${searchAction}"  method="POST" >
+    <label >
+        <input type="text" name="title"/>
+    </label>
+    <input type="submit" value="search" /> </form:form>
+
+
 <p >Pagination: </p>
 
 <c:url value="/books" var="prev">

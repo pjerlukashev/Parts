@@ -1,8 +1,10 @@
 package net.proselyte.springmvc.service;
 
+import net.proselyte.springmvc.BookNotFoundException;
 import net.proselyte.springmvc.dao.DAO;
 import net.proselyte.springmvc.dao.MockDAO;
 import net.proselyte.springmvc.model.Book;
+import org.springframework.dao.DataAccessException;
 
 import java.util.List;
 
@@ -45,5 +47,10 @@ public class MockService implements Service {
 
         dao.deleteBook(id);
 
+    }
+
+    @Override
+    public Book loadBookByTitle(String title) throws BookNotFoundException, DataAccessException {
+        return null;
     }
 }

@@ -53,5 +53,10 @@ public class MockDAO implements DAO {
         return books;
     }
 
+    @Override
+    public Book findBookByTitle(String name) {
+        return null;
+    }
+
 
 }

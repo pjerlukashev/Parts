@@ -13,6 +13,6 @@ public interface DAO {
 
     void deleteBook(int  id);
     List<Book> getAllBooks();
-
+    Book findBookByTitle(String name);
 
 }

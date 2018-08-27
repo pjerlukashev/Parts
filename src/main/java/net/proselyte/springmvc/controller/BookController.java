@@ -1,6 +1,7 @@
 package net.proselyte.springmvc.controller;
 
 
+import net.proselyte.springmvc.BookNotFoundException;
 import net.proselyte.springmvc.model.Book;
 import net.proselyte.springmvc.service.MockService;
 import net.proselyte.springmvc.service.Service;
@@ -14,6 +15,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
@@ -109,6 +111,23 @@ model.addAttribute("command", this.bookService.fingBookById(id));
 
 model.addAttribute("listBooks", this.bookService.getAllBooks());
         return "books";
+    }
+
+    @RequestMapping(value = "/search",method = RequestMethod.POST)
+    public String searchBook (HttpServletRequest request, Model model)throws BookNotFoundException {
+        String bookTitle=request.getParameter("title");
+        System.out.println("Searching book by title: " + bookTitle);
+       Book book=this.bookService.loadBookByTitle(bookTitle);
+        String result;
+        if(book==null){
+            result="errPage";
+        }
+        else result="result";
+
+
+
+        model.addAttribute("book",book);
+        return result;
     }
 
 }
