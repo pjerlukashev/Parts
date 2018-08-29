@@ -39,7 +39,8 @@
                 <td>${book.readAlready}</td>
                 <td><a href="<c:url value='/edit/${book.id}'/>">edit</a></td>
                 <td><a href="<c:url value='/remove/${book.id}'/>">delete</a></td>
-                <td><a href="mark">mark as already read</a></td>
+                <td><a href="<c:url value='/mark/${book.id}'/>">mark</a></td>
+
             </tr>
 
         </c:forEach>
@@ -214,8 +215,6 @@
 <c:if test="${page + 1 <= maxPages}">
     <a href='<c:out value="${next}" />' class="pn next">Next</a>
 </c:if>
-
-
 
 </body>
 </html>

@@ -113,6 +113,23 @@ model.addAttribute("listBooks", this.bookService.getAllBooks());
         return "books";
     }
 
+
+
+    @RequestMapping(value = "/mark/{id}")
+    public  String markBook(@PathVariable("id") int id, Model model){
+
+        Book book = this.bookService.fingBookById(id);
+
+        book.setReadAlready(1);
+
+        this.bookService.updateBook(book);
+
+        model.addAttribute("command", new Book());
+
+        model.addAttribute("listBooks", this.bookService.getAllBooks());
+        return "books";
+    }
+
     @RequestMapping(value = "/search",method = RequestMethod.POST)
     public String searchBook (HttpServletRequest request, Model model)throws BookNotFoundException {
         String bookTitle=request.getParameter("title");
