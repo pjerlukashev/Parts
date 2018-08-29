@@ -10,8 +10,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/proselyte/springmvc/controller/BookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/proselyte/springmvc/controller/BookController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/books.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/books.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProselyteSpringMVC.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProselyteSpringMVC.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProselyteSpringMVC/WEB-INF/pages/books.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProselyteSpringMVC/WEB-INF/pages/books.jsp" afterDir="false" />
     </list>
     <ignored path="ProselyteSpringMVC.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -167,14 +165,14 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="656" />
-          <entry key="jsp" value="241" />
+          <entry key="java" value="666" />
+          <entry key="jsp" value="259" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="656" />
-          <entry key="JSP" value="241" />
+          <entry key="JAVA" value="666" />
+          <entry key="JSP" value="259" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.lifecycle.project">
@@ -202,11 +200,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/books.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="697">
-              <caret line="41" column="68" selection-start-line="41" selection-start-column="68" selection-end-line="41" selection-end-column="68" />
+            <state relative-caret-position="58">
+              <caret line="153" column="13" lean-forward="true" selection-start-line="153" selection-start-column="13" selection-end-line="153" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -223,11 +221,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/net/proselyte/springmvc/controller/BookController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="314">
-              <caret line="124" column="40" selection-start-line="124" selection-start-column="40" selection-end-line="124" selection-end-column="40" />
+            <state relative-caret-position="619">
+              <caret line="140" column="35" selection-start-line="140" selection-start-column="35" selection-end-line="140" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -344,8 +342,8 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/errPage.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/bookdata.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/result.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/books.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/net/proselyte/springmvc/controller/BookController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/books.jsp" />
       </list>
     </option>
   </component>
@@ -893,15 +891,16 @@
       <workItem from="1534601781241" duration="27650000" />
       <workItem from="1534789492562" duration="26400000" />
       <workItem from="1535222575278" duration="2380000" />
-      <workItem from="1535572883537" duration="139000" />
+      <workItem from="1535572883537" duration="4018000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="132986000" />
+    <option name="totallyTimeSpent" value="136632000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27987897" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -914,7 +913,7 @@
       <window_info id="Persistence" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3287037" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49924356" visible="true" weight="0.16524702" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49924356" visible="true" weight="0.10732538" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -931,17 +930,17 @@
       <window_info anchor="bottom" id="Database Changes" order="16" />
       <window_info anchor="bottom" id="Database Console" order="17" visible="true" weight="0.0" />
       <window_info anchor="right" id="Bean Validation" order="0" weight="0.32980332" />
-      <window_info anchor="right" id="CDI" order="1" weight="0.32980332" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="2" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="4" />
-      <window_info anchor="right" id="Designer" order="5" />
-      <window_info anchor="right" id="IDEtalk" order="6" />
-      <window_info anchor="right" id="Capture Analysis" order="7" />
-      <window_info anchor="right" id="Theme Preview" order="8" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Designer" order="4" />
+      <window_info anchor="right" id="IDEtalk" order="5" />
+      <window_info anchor="right" id="Capture Analysis" order="6" />
+      <window_info anchor="right" id="Theme Preview" order="7" />
+      <window_info anchor="right" id="CDI" order="8" weight="0.32980332" />
       <window_info anchor="right" id="Maven Projects" order="9" weight="0.008320726" />
       <window_info anchor="right" id="Database" order="10" weight="0.2375189" />
-      <window_info anchor="right" id="Ant Build" order="11" visible="true" weight="0.006807867" />
+      <window_info anchor="right" id="Ant Build" order="11" weight="0.004538578" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1042,13 +1041,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/bookdata.jsp" />
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/books.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="697">
-          <caret line="41" column="68" selection-start-line="41" selection-start-column="68" selection-end-line="41" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/net/proselyte/springmvc/dao/bookDAOimpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1496">
@@ -1119,15 +1111,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/net/proselyte/springmvc/controller/BookController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="124" column="40" selection-start-line="124" selection-start-column="40" selection-end-line="124" selection-end-column="40" />
-          <folding>
-            <element signature="e#860#861#0" expanded="true" />
-            <element signature="e#906#907#0" expanded="true" />
-            <element signature="e#996#997#0" expanded="true" />
-            <element signature="e#1027#1028#0" expanded="true" />
-            <element signature="e#2346#2352#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="619">
+          <caret line="140" column="35" selection-start-line="140" selection-start-column="35" selection-end-line="140" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/books.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="58">
+          <caret line="153" column="13" lean-forward="true" selection-start-line="153" selection-start-column="13" selection-end-line="153" selection-end-column="13" />
         </state>
       </provider>
     </entry>

@@ -155,13 +155,13 @@
 
         <tr>
 <td colspan="2">
-<c:if test="${!empty book.title}">
+<c:if test="${!empty command.id}">
 
     <input type="submit"  value="<spring:message text="Edit Book"/>" />
 
 </c:if>
 
-    <c:if test="${empty book.title}">
+    <c:if test="${empty command.id}">
 
         <input type="submit"  value="<spring:message text="Add Book"/>" />
 
