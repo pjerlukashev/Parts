@@ -88,8 +88,6 @@ public class bookDAOimpl implements DAO {
 
         List<Book> books = session.createQuery("from Book").list();
 
-
-
         return books;
     }
 

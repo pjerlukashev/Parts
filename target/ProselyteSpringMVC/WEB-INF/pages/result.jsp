@@ -20,7 +20,7 @@
 
 <h2>Book Information</h2>
 
-<table >
+<table border="1" >
   <tr>
     <th width="80">ID</th>
     <th width="120">Title</th>

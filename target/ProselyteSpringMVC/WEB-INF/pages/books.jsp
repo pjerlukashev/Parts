@@ -14,7 +14,7 @@
 
 <c:if test="${!empty listBooks}">
 
-    <table>
+    <table border="1" cellpadding="5" cellspacing="0">
 
         <tr>
             <th>Id</th>
@@ -36,7 +36,7 @@
                 <td>${book.author}</td>
                 <td>${book.isbn}</td>
                 <td>${book.printYear}</td>
-                <td>${book.readAlready}</td>
+                <td><c:if test="${book.readAlready==0}"><c:out value="no"/></c:if><c:if test="${book.readAlready==1}"><c:out value="yes"/></c:if></td>
                 <td><a href="<c:url value='/edit/${book.id}'/>">edit</a></td>
                 <td><a href="<c:url value='/remove/${book.id}'/>">delete</a></td>
                 <td><a href="<c:url value='/mark/${book.id}'/>">mark</a></td>
@@ -50,19 +50,21 @@
 </c:if>
 
 
+<c:if test="${empty listBooks}">
+    Sorry, there are no books in the library!
+</c:if>
+
+
 <h2>Enter book information</h2>
 <c:url var="addAction" value="/addBook" />
 
 <form:form action="${addAction}" modelAttribute="command">
 
     <table>
-
-         <c:if test="${!empty command.title}" >
-
-             <tr>
+        <c:if test="${!empty command.title}" >
+            <tr>
                 <td>
-
-              <form:label path="id">
+                    <form:label path="id">
 <spring:message text="ID"/>
                     </form:label>
                 </td>
@@ -72,7 +74,6 @@
                  </td>
              </tr>
                  </c:if>
-
         <tr>
             <td>
                <form:label path="title">
@@ -84,8 +85,6 @@
 
                 <form:input path="title" />
             </td>
-
-
         </tr>
         <tr>
             <td>

@@ -33,21 +33,11 @@ public class BookController {
     public String index() {
         return "/index";
     }
-   /* @RequestMapping(value = "book", method = RequestMethod.GET)
-    public ModelAndView book() {
-        return new ModelAndView("book", "command", new Book());
-    }
-*/
+
     @RequestMapping(value = "/addBook", method = RequestMethod.POST)
     public String addBook(@ModelAttribute("mvc-dispatcher") Book book,
                              ModelMap model) {
-        model.addAttribute("id", book.getId());
-        model.addAttribute("title", book.getTitle());
-        model.addAttribute("description", book.getDescription());
-        model.addAttribute("author", book.getAuthor());
-        model.addAttribute("isbn", book.getIsbn());
-        model.addAttribute("printYear", book.getPrintYear());
-        model.addAttribute("readAlready", book.getReadAlready());
+
  if (book.getId()==0) {
      bookService.createBook(book);
  } else
@@ -55,7 +45,7 @@ public class BookController {
      bookService.updateBook(book);
  }
 
-        return "redirect:books";
+ return "redirect:books";
     }
 
     @RequestMapping(value="books", method= RequestMethod.GET )
@@ -71,10 +61,8 @@ public class BookController {
         pagedListHolder.setPageSize(10);
         model.addAttribute("maxPages", pagedListHolder.getPageCount());
 
-
         if(page==null || page < 1 || page > pagedListHolder.getPageCount())
             page = 1;
-
 
         model.addAttribute("page", page);
 
@@ -88,7 +76,6 @@ public class BookController {
             pagedListHolder.setPage(page-1);
             model.addAttribute("listBooks", pagedListHolder.getPageList());
         }
-
 
         return  "books";
 
@@ -158,7 +145,6 @@ model.addAttribute("command", this.bookService.fingBookById(id));
         if (page == null || page < 1 || page > pagedListHolder.getPageCount())
             page = 1;
 
-
         model.addAttribute("page", page);
 
         if (page > pagedListHolder.getPageCount()) {
@@ -184,8 +170,6 @@ model.addAttribute("command", this.bookService.fingBookById(id));
             result="errPage";
         }
         else result="result";
-
-
 
         model.addAttribute("book",book);
         return result;
