@@ -10,13 +10,45 @@
 <html>
 <head>
     <title>Book with this name not found</title>
+    <style type="text/css">
+
+        h1{
+            color: #035447;
+            margin-left:430px;
+        }
+
+        h2{
+            color: #085a4b;
+        }
+        h3{
+            margin-left: 600px;
+            color: #085a4b;
+        }
+        a{
+            color: #328072;
+        }
+        a:hover{
+            color: #b3bf2f;
+        }
+        a:active{
+
+            color: #07bf7c
+        }
+        a:visited{
+            color: #418598;
+        }
+
+    </style>
 </head>
 <body>
-<h3>
-    <a href="<c:url value="/books"/>"   >Books list</a>
-</h3>
 
 <h1 >Book with this name not found</h1>
+<br/>
+<h3>
+    <a href="<c:url value="/books"/>"   >Book list</a>
+</h3>
+
+
 
 
 
