@@ -4,6 +4,7 @@ package net.proselyte.springmvc.model;
 import org.hibernate.annotations.Proxy;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 @Entity
 @Proxy(lazy=false)

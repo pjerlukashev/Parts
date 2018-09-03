@@ -12,10 +12,12 @@ import org.springframework.beans.support.PagedListHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -35,8 +37,10 @@ public class BookController {
     }
 
     @RequestMapping(value = "/addBook", method = RequestMethod.POST)
-    public String addBook(@ModelAttribute("mvc-dispatcher") Book book,
-                             ModelMap model) {
+    public String addBook( @ModelAttribute("mvc-dispatcher") Book book,
+                          ModelMap model) {
+
+
 
  if (book.getId()==0) {
      bookService.createBook(book);
@@ -55,27 +59,7 @@ public class BookController {
 
       //  model.addAttribute("listBooks", this.bookService.getAllBooks());
 
-        List<Book> users = bookService.getAllBooks();
-
-        PagedListHolder<Book> pagedListHolder = new PagedListHolder<Book>(users);
-        pagedListHolder.setPageSize(10);
-        model.addAttribute("maxPages", pagedListHolder.getPageCount());
-
-        if(page==null || page < 1 || page > pagedListHolder.getPageCount())
-            page = 1;
-
-        model.addAttribute("page", page);
-
-        if(page>pagedListHolder.getPageCount()){
-            pagedListHolder.setPage(page);
-            model.addAttribute("listBooks", pagedListHolder.getPageList());
-        }
-
-        else if(page <= pagedListHolder.getPageCount()) {
-
-            pagedListHolder.setPage(page-1);
-            model.addAttribute("listBooks", pagedListHolder.getPageList());
-        }
+   setPageHolder(model, page);
 
         return  "books";
 
@@ -90,35 +74,12 @@ this.bookService.deleteBook(id);
          return "redirect:/books";
     }
 
-
     @RequestMapping(value = "/edit/{id}")
     public  String editBook(@RequestParam (required = false) Integer page, @PathVariable("id") int id, Model model){
 
 model.addAttribute("command", this.bookService.fingBookById(id));
 
-        List<Book> users = bookService.getAllBooks();
-
-        PagedListHolder<Book> pagedListHolder = new PagedListHolder<Book>(users);
-        pagedListHolder.setPageSize(10);
-        model.addAttribute("maxPages", pagedListHolder.getPageCount());
-
-
-        if(page==null || page < 1 || page > pagedListHolder.getPageCount())
-            page = 1;
-
-
-        model.addAttribute("page", page);
-
-        if(page>pagedListHolder.getPageCount()){
-            pagedListHolder.setPage(page);
-            model.addAttribute("listBooks", pagedListHolder.getPageList());
-        }
-
-        else if(page <= pagedListHolder.getPageCount()) {
-
-            pagedListHolder.setPage(page-1);
-            model.addAttribute("listBooks", pagedListHolder.getPageList());
-        }
+     setPageHolder(model,page);
         return "books";
     }
 
@@ -135,27 +96,7 @@ model.addAttribute("command", this.bookService.fingBookById(id));
 
         model.addAttribute("command", new Book());
 
-        List<Book> users = bookService.getAllBooks();
-
-        PagedListHolder<Book> pagedListHolder = new PagedListHolder<Book>(users);
-        pagedListHolder.setPageSize(10);
-        model.addAttribute("maxPages", pagedListHolder.getPageCount());
-
-
-        if (page == null || page < 1 || page > pagedListHolder.getPageCount())
-            page = 1;
-
-        model.addAttribute("page", page);
-
-        if (page > pagedListHolder.getPageCount()) {
-            pagedListHolder.setPage(page);
-            model.addAttribute("listBooks", pagedListHolder.getPageList());
-        } else if (page <= pagedListHolder.getPageCount()) {
-
-            pagedListHolder.setPage(page - 1);
-            model.addAttribute("listBooks", pagedListHolder.getPageList());
-
-        }
+     setPageHolder(model,page);
             return "books";
 
     }
@@ -173,6 +114,33 @@ model.addAttribute("command", this.bookService.fingBookById(id));
 
         model.addAttribute("book",book);
         return result;
+    }
+
+    public Model  setPageHolder(Model model, Integer page){
+
+        List<Book> books = bookService.getAllBooks();
+
+        PagedListHolder<Book> pagedListHolder = new PagedListHolder<Book>(books);
+        pagedListHolder.setPageSize(10);
+        model.addAttribute("maxPages", pagedListHolder.getPageCount());
+
+        if(page==null || page < 1 || page > pagedListHolder.getPageCount())
+            page = 1;
+
+        model.addAttribute("page", page);
+
+        if(page>pagedListHolder.getPageCount()){
+            pagedListHolder.setPage(page);
+            model.addAttribute("listBooks", pagedListHolder.getPageList());
+        }
+
+        else if(page <= pagedListHolder.getPageCount()) {
+
+            pagedListHolder.setPage(page-1);
+            model.addAttribute("listBooks", pagedListHolder.getPageList());
+        }
+
+        return model;
     }
 
 }
