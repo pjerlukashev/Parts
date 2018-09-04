@@ -38,11 +38,11 @@ public class BookController {
 
     @RequestMapping(value = "/addBook", method = RequestMethod.POST)
     public String addBook( @ModelAttribute("mvc-dispatcher") Book book,
-                          ModelMap model) {
+                          ModelMap model, @RequestParam(required=false) Integer page) {
 
+        model.addAttribute("page", page);
 
-
- if (book.getId()==0) {
+        if (book.getId()==0) {
      bookService.createBook(book);
  } else
  {
@@ -66,9 +66,9 @@ public class BookController {
     }
 
     @RequestMapping(value = "/remove/{id}")
-    public  String removeBook(@PathVariable("id") int id){
+    public  String removeBook(@PathVariable("id") int id, Model model, @RequestParam(required = false)Integer page){
 
-
+ model.addAttribute("page", page);
 this.bookService.deleteBook(id);
 
          return "redirect:/books";
@@ -79,11 +79,9 @@ this.bookService.deleteBook(id);
 
 model.addAttribute("command", this.bookService.fingBookById(id));
 
-     setPageHolder(model,page);
+    setPageHolder(model,page);
         return "books";
     }
-
-
 
     @RequestMapping(value = "/mark/{id}")
     public  String markBook(@RequestParam (required = false) Integer page,@PathVariable("id") int id, Model model) {
@@ -96,7 +94,7 @@ model.addAttribute("command", this.bookService.fingBookById(id));
 
         model.addAttribute("command", new Book());
 
-     setPageHolder(model,page);
+    setPageHolder(model,page);
             return "books";
 
     }

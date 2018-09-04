@@ -130,9 +130,9 @@
                 <td>${book.isbn}</td>
                 <td>${book.printYear}</td>
                 <td><c:if test="${book.readAlready==0}"><c:out value="no"/></c:if><c:if test="${book.readAlready==1}"><c:out value="yes"/></c:if></td>
-                <td><a href="<c:url value='/edit/${book.id}'/>">edit</a></td>
-                <td><a href="<c:url value='/remove/${book.id}'/>">delete</a></td>
-                <td><a href="<c:url value='/mark/${book.id}'/>">mark</a></td>
+                <td><a href="<c:url value='/edit/${book.id}'>  <c:param name="page" value="${page}"/></c:url>">edit</a></td>
+                <td><a href="<c:url value='/remove/${book.id}'> <c:param name="page" value="${page}"/></c:url>">delete</a></td>
+                <td><a href="<c:url value='/mark/${book.id}'> <c:param name="page" value="${page}"/></c:url>">mark</a></td>
 
             </tr>
 
@@ -177,7 +177,9 @@
 
 <div id="searchforms">
 <h2>Enter book information</h2>
-<c:url var="addAction" value="/addBook" />
+<c:url var="addAction" value="/addBook" >
+    <c:param name="page" value="${page}"/>
+</c:url>
 
 <form:form action="${addAction}" modelAttribute="command">
 
