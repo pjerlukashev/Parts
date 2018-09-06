@@ -45,7 +45,7 @@
 <h1 >Book with this name not found</h1>
 <br/>
 <h3>
-    <a href="<c:url value="/books"/>"   >Book list</a>
+    <a href="<c:url value="/books"> <c:param name="page" value="${page}"/></c:url>"   >Book list</a>
 </h3>
 
 

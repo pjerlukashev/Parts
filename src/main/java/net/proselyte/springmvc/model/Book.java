@@ -4,7 +4,9 @@ package net.proselyte.springmvc.model;
 import org.hibernate.annotations.Proxy;
 
 import javax.persistence.*;
-import javax.validation.constraints.*;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.*;
 
 @Entity
 @Proxy(lazy=false)
@@ -14,7 +16,7 @@ public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
+   @Length(min=2,max = 40)
     private  String title;
 
     private String description;

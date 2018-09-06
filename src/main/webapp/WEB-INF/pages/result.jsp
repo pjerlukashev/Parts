@@ -73,7 +73,7 @@
 
 <br/>
 
-<a href="books"  class="mycss2" >Back to books' view</a>
+<a href="<c:url value="/books"> <c:param name="page" value="${page}"/></c:url>"  class="mycss2" >Back to books' view</a>
 
 <br/>
 

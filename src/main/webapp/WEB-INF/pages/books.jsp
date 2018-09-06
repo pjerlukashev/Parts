@@ -301,7 +301,9 @@
 
 <h2 >Search a book by title:</h2>
 
-<c:url value="/search" var="searchAction" />
+<c:url value="/search" var="searchAction" >
+    <c:param name="page" value="${page}"/>
+    </c:url>
 <form:form action="${searchAction}"  method="POST" >
     <label >
         <input type="text" name="title"/>

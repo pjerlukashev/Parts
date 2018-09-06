@@ -37,10 +37,17 @@ public class BookController {
     }
 
     @RequestMapping(value = "/addBook", method = RequestMethod.POST)
-    public String addBook( @ModelAttribute("mvc-dispatcher") Book book,
-                          ModelMap model, @RequestParam(required=false) Integer page) {
+    public String addBook(@Valid @ModelAttribute("mvc-dispatcher") Book book,
+                          ModelMap model, @RequestParam(required=false) Integer page, BindingResult bindingResult) {
 
         model.addAttribute("page", page);
+
+
+        if(bindingResult.hasErrors()){
+            return "redirect:books";
+
+        }
+
 
         if (book.getId()==0) {
      bookService.createBook(book);
@@ -100,7 +107,7 @@ model.addAttribute("command", this.bookService.fingBookById(id));
     }
 
     @RequestMapping(value = "/search",method = RequestMethod.POST)
-    public String searchBook (HttpServletRequest request, Model model)throws BookNotFoundException {
+    public String searchBook (HttpServletRequest request, Model model, @RequestParam (required = false)Integer page)throws BookNotFoundException {
         String bookTitle=request.getParameter("title");
         System.out.println("Searching book by title: " + bookTitle);
        Book book=this.bookService.loadBookByTitle(bookTitle);
@@ -109,6 +116,8 @@ model.addAttribute("command", this.bookService.fingBookById(id));
             result="errPage";
         }
         else result="result";
+
+        setPageHolder(model,page);
 
         model.addAttribute("book",book);
         return result;
