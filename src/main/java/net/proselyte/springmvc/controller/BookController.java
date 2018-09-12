@@ -37,22 +37,25 @@ public class BookController {
     }
 
     @RequestMapping(value = "/addBook", method = RequestMethod.POST)
-    public String addBook(@Valid @ModelAttribute("mvc-dispatcher") Book book,
-                          ModelMap model, @RequestParam(required=false) Integer page, BindingResult bindingResult) {
+    public String addBook(@ModelAttribute("mvc-dispatcher") Book book,
+                          ModelMap model, @RequestParam(required=false) Integer page) {
 
         model.addAttribute("page", page);
 
 
-        if(bindingResult.hasErrors()){
+
+        /*if(bindingResult.hasErrors()){
             return "redirect:books";
 
-        }
+        }*/
 
-
+          book.setReadAlready(0);
         if (book.getId()==0) {
      bookService.createBook(book);
  } else
  {
+     Book unupdatedbook= this.bookService.fingBookById(book.getId());
+     book.setAuthor(unupdatedbook.getAuthor());
      bookService.updateBook(book);
  }
 
@@ -62,7 +65,11 @@ public class BookController {
     @RequestMapping(value="books", method= RequestMethod.GET )
     public  String listBooks(@RequestParam (required = false) Integer page,  Model model){
 
-        model.addAttribute("command", new Book());
+        Book book = new Book();
+
+
+
+        model.addAttribute("command", book);
 
       //  model.addAttribute("listBooks", this.bookService.getAllBooks());
 
@@ -84,7 +91,11 @@ this.bookService.deleteBook(id);
     @RequestMapping(value = "/edit/{id}")
     public  String editBook(@RequestParam (required = false) Integer page, @PathVariable("id") int id, Model model){
 
-model.addAttribute("command", this.bookService.fingBookById(id));
+        Book book = this.bookService.fingBookById(id);
+
+
+
+model.addAttribute("command", book);
 
     setPageHolder(model,page);
         return "books";

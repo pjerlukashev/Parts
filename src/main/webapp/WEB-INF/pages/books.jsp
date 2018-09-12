@@ -183,7 +183,7 @@
 
 <form:form action="${addAction}" modelAttribute="command">
 
-    <table>
+        <table>
         <c:if test="${!empty command.title}" >
             <tr>
                 <td>
@@ -221,6 +221,7 @@
                 <form:input path="description" cssClass="mycss" />
             </td>
         </tr>
+        <c:if test="${empty command.title}" >
         <tr>
             <td>
                 <form:label path="author" cssClass="mycss2">
@@ -230,10 +231,13 @@
             </td>
             <td>
 
-                <form:input path="author" cssClass="mycss" />
+                <form:input path="author"  cssClass="mycss" />
             </td>
 
         </tr>
+    </c:if>
+
+
         <tr>
             <td>
                 <form:label path="isbn" cssClass="mycss2">
@@ -262,16 +266,6 @@
 
         </tr>
         <tr>
-            <td>
-                <form:label path="readAlready" cssClass="mycss2">
-
-                    <spring:message text="Already read"/>
-                </form:label>
-            </td>
-            <td>
-
-                <form:input path="readAlready"  cssClass="mycss"/>
-            </td>
 
         </tr>
 

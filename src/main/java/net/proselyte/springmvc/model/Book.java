@@ -16,7 +16,7 @@ public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-   @Length(min=2,max = 40)
+
     private  String title;
 
     private String description;
