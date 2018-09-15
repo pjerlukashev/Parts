@@ -103,36 +103,36 @@
 </head>
 
 <body>
-<h1>Information about the computer parts</h1>
+<h1>Information about the optional parts</h1>
 
 <c:if test="${empty listParts}">
-    <p class="ii">The list is empty! <br/> Enter part information in the form to add computer part.</p>
+    <p class="ii">There are no optional parts in stock! <br/> Enter part information in the form to add computer part.</p>
 </c:if>
 
 <c:if test="${!empty listParts}">
 
-<table class="tg">
+    <table class="tg">
 
-    <tr>
-        <th>Title</th>
-        <th>Quantity</th>
-        <th>Is required</th>
-        <th>Edit</th>
-        <th>Delete</th>
-    </tr>
-    <c:forEach items="${listParts}" var = "part">
         <tr>
-            <td>${part.partName}</td>
-            <td>${part.quantity}</td>
-            <td><c:if test="${part.isRequired==0}"><c:out value="no"/></c:if><c:if test="${part.isRequired==1}"><c:out value="yes"/></c:if></td>
-            <td><a href="<c:url value='/edit/${part.id}'>  <c:param name="page" value="${page}"/></c:url>">edit</a></td>
-            <td><a href="<c:url value='/remove/${part.id}'> <c:param name="page" value="${page}"/></c:url>">delete</a></td>
-
+            <th>Title</th>
+            <th>Quantity</th>
+            <th>Is required</th>
+            <th>Edit</th>
+            <th>Delete</th>
         </tr>
+        <c:forEach items="${listParts}" var = "part">
+            <tr>
+                <td>${part.partName}</td>
+                <td>${part.quantity}</td>
+                <td><c:if test="${part.isRequired==0}"><c:out value="no"/></c:if><c:if test="${part.isRequired==1}"><c:out value="yes"/></c:if></td>
+                <td><a href="<c:url value='/edit/${part.id}'>  <c:param name="page" value="${page}"/></c:url>">edit</a></td>
+                <td><a href="<c:url value='/remove/${part.id}'> <c:param name="page" value="${page}"/></c:url>">delete</a></td>
 
-    </c:forEach>
+            </tr>
 
-</table>
+        </c:forEach>
+
+    </table>
 
 <div id="pagination">
 
@@ -140,7 +140,7 @@
         <p >Pages: </p>
     </div>
 
-    <c:url value="/parts" var="prev">
+    <c:url value="/optionalparts" var="prev">
         <c:param name="page" value="${page-1}"/>
     </c:url>
     <c:if test="${page > 1}">
@@ -153,20 +153,23 @@
                 <span>${i.index}</span>
             </c:when>
             <c:otherwise>
-                <c:url value="/parts" var="url">
+                <c:url value="/optionalparts" var="url">
                     <c:param name="page" value="${i.index}"/>
                 </c:url>
                 <a href='<c:out value="${url}" />'>${i.index}</a>
             </c:otherwise>
         </c:choose>
     </c:forEach>
-    <c:url value="/parts" var="next">
+    <c:url value="/optionalparts" var="next">
         <c:param name="page" value="${page + 1}"/>
     </c:url>
     <c:if test="${page + 1 <= maxPages}">
         <a href='<c:out value="${next}" />' class="pn next">Next</a>
     </c:if>
 </div>
+
+<br/>
+<br/>
 
 </c:if>
 
@@ -181,81 +184,81 @@
 
     <form:form action="${addAction}" modelAttribute="command">
 
-    <table>
-        <c:if test="${!empty command.partName}" >
+        <table>
+            <c:if test="${!empty command.partName}" >
+                <tr>
+                    <td>
+                        <form:label path="id" cssClass="mycss2">
+                            <spring:message text="ID"/>
+                        </form:label>
+                    </td>
+                    <td>
+                        <form:input path="id" readonly="true" size="8" disabled="true"  cssClass="mycss"/>
+                        <form:hidden path="id"/>
+                    </td>
+                </tr>
+            </c:if>
             <tr>
                 <td>
-                    <form:label path="id" cssClass="mycss2">
-                        <spring:message text="ID"/>
+                    <form:label path="partName" cssClass="mycss2">
+
+                        <spring:message text="partName"/>
                     </form:label>
                 </td>
                 <td>
-                    <form:input path="id" readonly="true" size="8" disabled="true"  cssClass="mycss"/>
-                    <form:hidden path="id"/>
+
+                    <form:input path="partName" cssClass="mycss" />
                 </td>
             </tr>
-        </c:if>
-        <tr>
-            <td>
-                <form:label path="partName" cssClass="mycss2">
+            <tr>
+                <td>
+                    <form:label path="quantity" cssClass="mycss2">
 
-                    <spring:message text="partName"/>
-                </form:label>
-            </td>
-            <td>
+                        <spring:message text="quantity"/>
+                    </form:label>
+                </td>
+                <td>
 
-                <form:input path="partName" cssClass="mycss" />
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <form:label path="quantity" cssClass="mycss2">
+                    <form:input path="quantity" cssClass="mycss" />
+                </td>
+            </tr>
 
-                    <spring:message text="quantity"/>
-                </form:label>
-            </td>
-            <td>
+            <tr>
+                <td>
+                    <form:label path="isRequired" cssClass="mycss2">
 
-                <form:input path="quantity" cssClass="mycss" />
-            </td>
-        </tr>
+                        <spring:message text="isRequired"/>
+                    </form:label>
+                </td>
+                <td>
 
-        <tr>
-            <td>
-                <form:label path="isRequired" cssClass="mycss2">
+                    <form:input path="isRequired"  cssClass="mycss"/>
+                </td>
 
-                    <spring:message text="isRequired"/>
-                </form:label>
-            </td>
-            <td>
+            </tr>
+            <tr>
 
-                <form:input path="isRequired"  cssClass="mycss"/>
-            </td>
+            </tr>
 
-        </tr>
-        <tr>
+            <tr>
+                <td colspan="2">
+                    <c:if test="${!empty command.partName}">
 
-        </tr>
+                        <input type="submit"  value="<spring:message text="Edit Part" />" class="mycss" />
 
-        <tr>
-            <td colspan="2">
-                <c:if test="${!empty command.partName}">
+                    </c:if>
 
-                    <input type="submit"  value="<spring:message text="Edit Part" />" class="mycss" />
+                    <c:if test="${empty command.partName}">
 
-                </c:if>
+                        <input type="submit"  value="<spring:message text="Add Part"/> " class="mycss" />
 
-                <c:if test="${empty command.partName}">
+                    </c:if>
 
-                    <input type="submit"  value="<spring:message text="Add Part"/> " class="mycss" />
+                </td>
 
-                </c:if>
+            </tr>
 
-            </td>
-
-        </tr>
-
-    </table>
+        </table>
 
 
     </form:form>
@@ -278,18 +281,15 @@
     <br/>
 
     <c:if test="${computerCount!=0}">
-    <h2 class="mycss2"><c:out value="You can assemble ${computerCount} computers"  /><h2>
+        <h2 class="mycss2"><c:out value="You can assemble ${computerCount} computers"  /><h2>
 
-        </c:if>
+    </c:if>
 
-        <br/>
-    <a href="<c:url value='/requiredparts'> </c:url>">Show required parts</a>
-<br/>
-<br/>
-    <a href="<c:url value='/optionalparts'></c:url>">Show optional parts</a>
-<br/>
-<br/>
+    <br/>
 
+    <a href="<c:url value='/parts'> </c:url>" class="mycss2">Show all parts</a>
+    <br/>
+    <br/>
     <a href="/"  class="mycss2"  >Back to main page </a>
 </div>
 

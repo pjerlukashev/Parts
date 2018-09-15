@@ -59,4 +59,21 @@ private DAO partDAO;
     public Part loadPartByName(String partName) throws PartNotFoundException, DataAccessException {
         return partDAO.findPartByName(partName);
     }
+
+    public List<Part>  getRequiredParts(){
+
+        return partDAO.getRequiredParts();
+    }
+
+    public List<Part>  getOptionalParts(){
+
+        return partDAO.getOptionalParts();
+    }
+
+    public int getComputerCount(){
+
+      return   partDAO.getComputerCount();
+
+    }
+
 }

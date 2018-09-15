@@ -54,8 +54,10 @@
             margin-left:75px;
 
         }
-        #backreference{
-            margin-left: 75px;
+        #infoandreferences{
+            position:absolute;
+            top: 100px;
+            left:500px;
 
         }
         .ii{
@@ -131,7 +133,7 @@
     </c:forEach>
 
 </table>
-</c:if>
+
 <div id="pagination">
 
     <div class="mycss2">
@@ -165,6 +167,10 @@
         <a href='<c:out value="${next}" />' class="pn next">Next</a>
     </c:if>
 </div>
+
+</c:if>
+
+
 
 
 <div id="searchforms">
@@ -267,7 +273,23 @@
 
 </div>
 <br/>
-<div id = backreference>
+<div id = infoandreferences>
+
+    <br/>
+
+    <c:if test="${computerCount!=0}">
+    <h2 class="mycss2"><c:out value="You can assemble ${computerCount} computers"  /><h2>
+
+        </c:if>
+
+        <br/>
+    <a href="<c:url value='/requiredparts'> </c:url>">Show required parts</a>
+<br/>
+<br/>
+    <a href="<c:url value='/optionalparts'></c:url>">Show optional parts</a>
+<br/>
+<br/>
+
     <a href="/"  class="mycss2"  >Back to main page </a>
 </div>
 

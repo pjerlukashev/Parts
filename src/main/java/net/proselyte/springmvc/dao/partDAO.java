@@ -5,6 +5,8 @@ import net.proselyte.springmvc.model.Part;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class partDAO implements DAO {
@@ -87,4 +89,44 @@ public class partDAO implements DAO {
         }
         return part;
     }
+
+    public List<Part>  getOptionalParts(){
+
+        Session session = this.sessionFactory.getCurrentSession();
+
+        List<Part> parts = session.createQuery("from Part  where isRequired = :nul").setParameter("nul", 0).list();
+
+        return parts;
+
+    }
+
+    @Override
+    public List<Part>  getRequiredParts(){
+
+        Session session = this.sessionFactory.getCurrentSession();
+
+        List<Part> parts = session.createQuery("from Part  where isRequired = :unit").setParameter("unit", 1).list();
+
+        return parts;
+
+    }
+
+    public int getComputerCount(){
+
+   List<Part> requiredParts = getRequiredParts();
+
+   List<Integer> quantities = new ArrayList<Integer>();
+
+        for (int i = 0; i <requiredParts.size() ; i++) {
+
+         quantities.add(requiredParts.get(i).getQuantity());
+
+        }
+return Collections.min(quantities);
+
+    }
 }
+
+
+
+

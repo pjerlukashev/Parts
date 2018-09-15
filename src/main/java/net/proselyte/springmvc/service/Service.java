@@ -19,5 +19,9 @@ public interface Service {
 
   Part loadPartByName(String partName)throws PartNotFoundException, DataAccessException;
 
+  public List<Part>  getRequiredParts();
+
+  public List<Part>  getOptionalParts();
+  public int getComputerCount();
 
 }

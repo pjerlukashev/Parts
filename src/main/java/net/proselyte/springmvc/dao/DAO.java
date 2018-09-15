@@ -16,4 +16,9 @@ public interface DAO {
     List<Part> getAllParts();
    Part findPartByName(String partName);
 
+    public List<Part>  getRequiredParts();
+
+    public List<Part>  getOptionalParts();
+
+    public int getComputerCount();
 }
