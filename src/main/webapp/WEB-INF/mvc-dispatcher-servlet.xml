@@ -17,13 +17,13 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
-    <bean id="bookDAO" class="net.proselyte.springmvc.dao.MockDAO">
+  <!--  <bean id="bookDAO" class="net.proselyte.springmvc.dao.MockDAO">
     </bean>
 
     <bean id="bookService" class="net.proselyte.springmvc.service.MockService">
 
       <property name="dao" ref="bookDAO"/>
-    </bean>
+    </bean>-->
 
    <!-- <mvc:annotation-driven/>-->
 
@@ -103,7 +103,7 @@
 
         <property name="annotatedClasses">
             <list>
-                <value>net.proselyte.springmvc.model.Book</value>
+                <value>net.proselyte.springmvc.model.Part</value>
             </list>
         </property>
 
@@ -130,7 +130,7 @@
 
     </bean>
 
-    <bean id="bookDAOImpl" class="net.proselyte.springmvc.dao.bookDAOimpl">
+    <bean id="partDao" class="net.proselyte.springmvc.dao.partDAO">
 
         <property name="sessionFactory" ref="sessionFactory" />
 
@@ -138,9 +138,9 @@
 
 
 
-    <bean id="bookServiceImpl" class="net.proselyte.springmvc.service.bookServiceImpl">
+    <bean id="partService" class="net.proselyte.springmvc.service.PartService">
 
-        <property name="bookDAOimpl" ref="bookDAOImpl" />
+        <property name="partDAO" ref="partDao" />
 
     </bean>
 

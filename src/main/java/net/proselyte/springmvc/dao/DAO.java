@@ -1,18 +1,19 @@
 package net.proselyte.springmvc.dao;
 
 import net.proselyte.springmvc.model.Book;
+import net.proselyte.springmvc.model.Part;
 
 import java.util.List;
 
 public interface DAO {
 
-    Book fingBookById(int id);
-    void createBook(Book book);
+    Part fingPartById(int id);
+    void createPart(Part part);
 
-    void updateBook(Book book);
+    void updatePart(Part part);
 
-    void deleteBook(int  id);
-    List<Book> getAllBooks();
-    Book findBookByTitle(String name);
+    void deletePart(int  id);
+    List<Part> getAllParts();
+   Part findPartByName(String partName);
 
 }

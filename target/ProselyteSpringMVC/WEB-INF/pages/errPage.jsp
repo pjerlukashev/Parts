@@ -42,15 +42,11 @@
 </head>
 <body>
 
-<h1 >Book with this name not found</h1>
+<h1 >Part with this name not found</h1>
 <br/>
 <h3>
-    <a href="<c:url value="/books"> <c:param name="page" value="${page}"/></c:url>"   >Book list</a>
+    <a href="<c:url value="/parts"> <c:param name="page" value="${page}"/></c:url>"   >Part list</a>
 </h3>
-
-
-
-
 
 </body>
 </html>

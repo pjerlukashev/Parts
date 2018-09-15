@@ -1,23 +1,23 @@
 package net.proselyte.springmvc.service;
 
-import net.proselyte.springmvc.BookNotFoundException;
-import net.proselyte.springmvc.model.Book;
+import net.proselyte.springmvc.PartNotFoundException;
+import net.proselyte.springmvc.model.Part;
 import org.springframework.dao.DataAccessException;
 
 import java.util.List;
 
 public interface Service {
 
-  List<Book> getAllBooks();
-    Book fingBookById(int id);
+  List<Part> getAllParts();
+    Part fingPartById(int id);
 
-    void createBook(Book book);
+    void createPart(Part part);
 
-    void updateBook(Book book);
+    void updatePart(Part part);
 
-    void deleteBook(int  id);
+    void deletePart(int  id);
 
-  Book loadBookByTitle(String title)throws BookNotFoundException, DataAccessException;
+  Part loadPartByName(String partName)throws PartNotFoundException, DataAccessException;
 
 
 }

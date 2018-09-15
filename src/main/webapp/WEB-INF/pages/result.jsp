@@ -73,32 +73,24 @@
 
 <br/>
 
-<a href="<c:url value="/books"> <c:param name="page" value="${page}"/></c:url>"  class="mycss2" >Back to books' view</a>
+<a href="<c:url value="/parts"> <c:param name="page" value="${page}"/></c:url>"  class="mycss2" >Back to part list</a>
 
 <br/>
 
 
-<h2>Book Information</h2>
+<h2>Part Information</h2>
 
 <table class="tg" >
   <tr>
-    <th width="80">ID</th>
-    <th width="120">Title</th>
-    <th width="120">Description</th>
-    <th width="120">Author</th>
-    <th width="120">ISBN</th>
-    <th width="120">Year published</th>
-    <th width="120">Already read</th>
+    <th width="120">Name</th>
+    <th width="60">Quantity</th>
+    <th width="60">Required</th>
+
   </tr>
   <tr>
-    <td>${book.id}</td>
-    <td>${book.title}</td>
-    <td>${book.description}</td>
-    <td>${book.author}</td>
-    <td>${book.isbn}</td>
-    <td>${book.printYear}</td>
-    <td>${book.readAlready}</td>
-
+    <td>${part.partName}</td>
+    <td>${part.quantity}</td>
+    <td><c:if test="${part.isRequired==0}"><c:out value="no"/></c:if><c:if test="${part.isRequired==1}"><c:out value="yes"/></c:if></td>
 
 
   </tr>

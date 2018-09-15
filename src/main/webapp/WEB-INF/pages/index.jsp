@@ -33,8 +33,8 @@
 </head>
 <body>
 
-<h1>Welcome to library!</h1>
+<h1>Welcome to warehouse!</h1>
 <br/>
-  <h3><a href="/books">View books</a></h3>
+  <h3><a href="/parts">View part list</a></h3>
 </body>
 </html>
