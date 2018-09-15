@@ -1,0 +1,8 @@
+net\proselyte\springmvc\PartNotFoundException.class
+net\proselyte\springmvc\service\Service.class
+net\proselyte\springmvc\dao\partDAO.class
+net\proselyte\springmvc\model\Part.class
+net\proselyte\springmvc\service\PartService.class
+net\proselyte\springmvc\controller\PartsController.class
+net\proselyte\springmvc\dao\DAO.class
+net\proselyte\springmvc\model\Book.class

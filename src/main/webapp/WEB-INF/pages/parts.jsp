@@ -278,19 +278,19 @@
     <br/>
 
     <c:if test="${computerCount!=0}">
-    <h2 class="mycss2"><c:out value="You can assemble ${computerCount} computers"  /><h2>
+    <h2 class="mycss2"><c:out value="You can assemble ${computerCount} computers"  /></h2>
 
         </c:if>
 
         <br/>
-    <a href="<c:url value='/requiredparts'> </c:url>">Show required parts</a>
+  <h2>  <a href="<c:url value='/requiredparts'> </c:url>">Show required parts</a>
 <br/>
 <br/>
     <a href="<c:url value='/optionalparts'></c:url>">Show optional parts</a>
 <br/>
 <br/>
 
-    <a href="/"  class="mycss2"  >Back to main page </a>
+    <a href="/"  class="mycss2"  >Back to main page </a> </h2>
 </div>
 
 

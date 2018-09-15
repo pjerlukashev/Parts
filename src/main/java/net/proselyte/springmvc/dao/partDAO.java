@@ -122,7 +122,8 @@ public class partDAO implements DAO {
          quantities.add(requiredParts.get(i).getQuantity());
 
         }
-return Collections.min(quantities);
+
+return quantities.size()!=0? Collections.min(quantities):0;
 
     }
 }
