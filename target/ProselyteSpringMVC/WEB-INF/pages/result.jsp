@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Book Info</title>
+  <title>Part Info</title>
     <style type="text/css">
     .tg {
     border-collapse: collapse;

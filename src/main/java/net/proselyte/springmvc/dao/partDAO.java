@@ -4,6 +4,8 @@ import net.proselyte.springmvc.PartNotFoundException;
 import net.proselyte.springmvc.model.Part;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -11,6 +13,8 @@ import java.util.List;
 
 public class partDAO implements DAO {
     private  SessionFactory sessionFactory;
+
+ private static Logger logger = LoggerFactory.getLogger(partDAO.class);
 
     public  void setSessionFactory(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
@@ -22,6 +26,13 @@ public class partDAO implements DAO {
 
         Part part = (Part) session.load(Part.class, new Integer(id));
 
+        if (part!=null){
+            logger.info("Part successfully found. Part details:" + part);
+        }else{
+
+            logger.info("Part with id:" + id + "not found");
+        }
+
         return part;
     }
 
@@ -32,6 +43,8 @@ public class partDAO implements DAO {
 
         session.persist(part);
 
+        logger.info("Part successfully saved. Part details:" + part);
+
     }
 
     @Override
@@ -41,6 +54,8 @@ public class partDAO implements DAO {
         Session session = this.sessionFactory.getCurrentSession();
 
         session.update(part);
+
+        logger.info("Part successfully updated. Part details:" + part);
 
     }
 
@@ -54,6 +69,10 @@ public class partDAO implements DAO {
         if (part!=null){
 
             session.delete(part);
+            logger.info("Part successfully deleted. Part details:" + part);
+        }else{
+
+            logger.info("Part with id:" + id + "not found");
         }
 
     }
@@ -63,6 +82,8 @@ public class partDAO implements DAO {
         Session session = this.sessionFactory.getCurrentSession();
 
         List<Part> parts = session.createQuery("from Part").list();
+
+        for(Part part:parts){logger.info("Parts list:" + part);}
 
         return parts;
     }
@@ -82,7 +103,7 @@ public class partDAO implements DAO {
             }else{
 
                 part = partList.get(0);
-
+                logger.info("Part successfully found by name. Part details:" + part);
             }
         } catch (PartNotFoundException e){
             e.printStackTrace();
@@ -96,6 +117,8 @@ public class partDAO implements DAO {
 
         List<Part> parts = session.createQuery("from Part  where isRequired = :nul").setParameter("nul", 0).list();
 
+        for(Part part:parts){logger.info("Optional parts list:" + part);}
+
         return parts;
 
     }
@@ -106,6 +129,8 @@ public class partDAO implements DAO {
         Session session = this.sessionFactory.getCurrentSession();
 
         List<Part> parts = session.createQuery("from Part  where isRequired = :unit").setParameter("unit", 1).list();
+
+        for(Part part:parts){logger.info("Required parts list:" + part);}
 
         return parts;
 
@@ -123,7 +148,11 @@ public class partDAO implements DAO {
 
         }
 
-return quantities.size()!=0? Collections.min(quantities):0;
+        int count = quantities.size()!=0? Collections.min(quantities):0;
+
+        logger.info("Computer count is:" + count);
+
+return count;
 
     }
 }
