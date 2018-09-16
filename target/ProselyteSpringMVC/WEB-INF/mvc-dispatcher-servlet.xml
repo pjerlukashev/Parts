@@ -17,65 +17,7 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
-  <!--  <bean id="bookDAO" class="net.proselyte.springmvc.dao.MockDAO">
-    </bean>
 
-    <bean id="bookService" class="net.proselyte.springmvc.service.MockService">
-
-      <property name="dao" ref="bookDAO"/>
-    </bean>-->
-
-   <!-- <mvc:annotation-driven/>-->
-
- <!-- <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" >
-        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-<property name="url" value="jdbc:mysql://localhost:3306/frogs?serverTimezone=Europe/Moscow"/>
-<property name="username" value="root"/>
-<property name="password" value="root"/>
-            </bean>
-
-    <bean id="hibernate5AnnotatedSessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
-
-        <property name="dataSource" ref="dataSource"/>
-        <property name="annotatedClasses">
-            <list>
-                <value>net.proselyte.springmvc.model.Book</value>
-            </list>
-        </property>
-
-        <property name="hibernateProperties">
-
-            <props>
-
-                <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
-
-                <prop key="hibernate.show_sql">true</prop>
-            </props>
-
-        </property>
-
-    </bean>
-
-    <bean id="bookDAOhibernate" class="net.proselyte.springmvc.dao.bookDAOimpl">
-
-<property name="sessionFactory" value="hibernate4AnnotatedSessionFactory"/>
-
-    </bean>
-
-
-
-    <bean id="bookServicehibernate" class="net.proselyte.springmvc.service.bookServiceImpl">
-
-        <property name="bookDAOimpl" ref="bookDAOhibernate"/>
-
-            </bean>
-
-
-
-    <bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
-
-        <property name="sessionFactory" value="hibernate5AnnotatedSessionFactory" />
-    </bean>-->
 
     <bean id="propertyConfigurer"  class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 

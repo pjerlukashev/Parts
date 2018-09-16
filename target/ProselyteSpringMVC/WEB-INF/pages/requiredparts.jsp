@@ -14,7 +14,7 @@
             border-collapse: collapse;
             border-spacing: 0;
             border-color: #20a088;
-            
+
         }
 
         .tg td {

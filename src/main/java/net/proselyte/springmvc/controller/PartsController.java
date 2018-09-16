@@ -55,7 +55,9 @@ public class PartsController {
 
         model.addAttribute("computerCount", partService.getComputerCount());
 
-        setPageHolder(model, page);
+        List<Part> parts = partService.getAllParts();
+
+        setPageHolder(model,page,parts);
 
         return  "parts";
 
@@ -79,9 +81,13 @@ public class PartsController {
 
         model.addAttribute("command", part);
 
-        setPageHolder(model,page);
+
+        List<Part> parts = partService.getAllParts();
+
+        setPageHolder(model,page,parts);
 
         model.addAttribute("computerCount", partService.getComputerCount());
+
         return "parts";
     }
 
@@ -96,17 +102,15 @@ public class PartsController {
         }
         else result="result";
 
-        setPageHolder(model,page);
+        List<Part> parts = partService.getAllParts();
 
-
+        setPageHolder(model,page,parts);
 
         model.addAttribute("part",part);
         return result;
     }
 
-    public Model  setPageHolder(Model model, Integer page){
-
-        List<Part> parts = partService.getAllParts();
+    public Model  setPageHolder(Model model, Integer page, List<Part> parts){
 
         PagedListHolder<Part> pagedListHolder = new PagedListHolder<Part>(parts);
         pagedListHolder.setPageSize(10);
@@ -116,7 +120,7 @@ public class PartsController {
             page = 1;
 
         model.addAttribute("page", page);
-        
+
 
         if(page>pagedListHolder.getPageCount()){
             pagedListHolder.setPage(page);
@@ -142,25 +146,7 @@ public class PartsController {
 
         List<Part> parts = partService.getRequiredParts();
 
-        PagedListHolder<Part> pagedListHolder = new PagedListHolder<Part>(parts);
-        pagedListHolder.setPageSize(10);
-        model.addAttribute("maxPages", pagedListHolder.getPageCount());
-
-        if(page==null || page < 1 || page > pagedListHolder.getPageCount())
-            page = 1;
-
-        model.addAttribute("page", page);
-
-        if(page>pagedListHolder.getPageCount()){
-            pagedListHolder.setPage(page);
-            model.addAttribute("listParts", pagedListHolder.getPageList());
-        }
-
-        else if(page <= pagedListHolder.getPageCount()) {
-
-            pagedListHolder.setPage(page-1);
-            model.addAttribute("listParts", pagedListHolder.getPageList());
-        }
+        setPageHolder(model,page,parts);
 
         return  "requiredparts";
 
@@ -170,32 +156,13 @@ public class PartsController {
     @RequestMapping(value="optionalparts", method= RequestMethod.GET )
     public  String optionalParts(@RequestParam (required = false) Integer page,  Model model){
 
-
         model.addAttribute("command", new Part());
 
         model.addAttribute("computerCount", partService.getComputerCount());
 
         List<Part> parts = partService.getOptionalParts();
 
-        PagedListHolder<Part> pagedListHolder = new PagedListHolder<Part>(parts);
-        pagedListHolder.setPageSize(10);
-        model.addAttribute("maxPages", pagedListHolder.getPageCount());
-
-        if(page==null || page < 1 || page > pagedListHolder.getPageCount())
-            page = 1;
-
-        model.addAttribute("page", page);
-
-        if(page>pagedListHolder.getPageCount()){
-            pagedListHolder.setPage(page);
-            model.addAttribute("listParts", pagedListHolder.getPageList());
-        }
-
-        else if(page <= pagedListHolder.getPageCount()) {
-
-            pagedListHolder.setPage(page-1);
-            model.addAttribute("listParts", pagedListHolder.getPageList());
-        }
+        setPageHolder(model,page,parts);
 
         return  "optionalparts";
 
