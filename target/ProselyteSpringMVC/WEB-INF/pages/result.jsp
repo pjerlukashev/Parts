@@ -87,13 +87,16 @@
     <th width="120">Name</th>
     <th width="60">Quantity</th>
     <th width="60">Required</th>
+    <th width="60">Edit</th>
+    <th width="60">Delete</th>
 
   </tr>
   <tr>
     <td>${part.partName}</td>
     <td>${part.quantity}</td>
     <td><c:if test="${part.isRequired==0}"><c:out value="no"/></c:if><c:if test="${part.isRequired==1}"><c:out value="yes"/></c:if></td>
-
+    <td><a href="<c:url value='/edit/${part.id}'>  <c:param name="viewParam" value="parts"/></c:url>">edit</a></td>
+    <td><a href="<c:url value='/remove/${part.id}'> <c:param name="viewParam" value="parts"/></c:url>">delete</a></td>
 
   </tr>
 </table>

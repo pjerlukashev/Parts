@@ -134,8 +134,8 @@
                 <td>${part.partName}</td>
                 <td>${part.quantity}</td>
                 <td><c:if test="${part.isRequired==0}"><c:out value="no"/></c:if><c:if test="${part.isRequired==1}"><c:out value="yes"/></c:if></td>
-                <td><a href="<c:url value='/edit/${part.id}'>  <c:param name="page" value="${page}"/></c:url>">edit</a></td>
-                <td><a href="<c:url value='/remove/${part.id}'> <c:param name="page" value="${page}"/></c:url>">delete</a></td>
+                <td><a href="<c:url value='/edit/${part.id}'>  <c:param name="page" value="${page}"/><c:param name="viewParam" value="optionalparts"/></c:url>">edit</a></td>
+                <td><a href="<c:url value='/remove/${part.id}'> <c:param name="page" value="${page}"/> <c:param name="viewParam" value="optionalparts"/></c:url>">delete</a></td>
 
             </tr>
 
@@ -188,7 +188,7 @@
 <div id="searchforms">
     <h2>Enter part information</h2>
     <c:url var="addAction" value="/addPart" >
-        <c:param name="page" value="${page}"/>
+        <c:param name="page" value="${page}"/><c:param name="viewParam" value="optionalparts"/>
     </c:url>
 
     <form:form action="${addAction}" modelAttribute="command">

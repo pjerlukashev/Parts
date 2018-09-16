@@ -33,7 +33,19 @@ public class PartsController {
 
     @RequestMapping(value = "/addPart", method = RequestMethod.POST)
     public String addPart(@ModelAttribute("mvc-dispatcher") Part part,
-                          ModelMap model, @RequestParam(required=false) Integer page) {
+                          ModelMap model, @RequestParam(required=false) Integer page, @RequestParam (required=false) String viewParam) {
+
+        String result= null;
+
+        if (viewParam.equals("optionalparts"))
+            result="redirect:/optionalparts";
+
+        if (viewParam.equals("requiredparts"))
+            result="redirect:/requiredparts";
+
+        if (viewParam.equals("parts"))
+            result="redirect:/parts";
+
 
         model.addAttribute("page", page);
 
@@ -44,7 +56,7 @@ public class PartsController {
             partService.updatePart(part);
         }
 
-        return "redirect:parts";
+        return result;
     }
 
     @RequestMapping(value="parts", method= RequestMethod.GET )
@@ -64,31 +76,55 @@ public class PartsController {
     }
 
     @RequestMapping(value = "/remove/{id}")
-    public  String removePart(@PathVariable("id") int id, Model model, @RequestParam(required = false)Integer page){
+    public  String removePart(@PathVariable("id") int id, Model model, @RequestParam(required = false)Integer page, @RequestParam(required = false)String viewParam){
+
+     String result= null;
+
+     if (viewParam.equals("optionalparts"))
+         result="redirect:/optionalparts";
+
+        if (viewParam.equals("requiredparts"))
+            result="redirect:/requiredparts";
+
+        if (viewParam.equals("parts"))
+            result="redirect:/parts";
 
         model.addAttribute("page", page);
         this.partService.deletePart(id);
 
-        return "redirect:/parts";
+        return result;
     }
 
     @RequestMapping(value = "/edit/{id}")
-    public  String editPart(@RequestParam (required = false) Integer page, @PathVariable("id") int id, Model model){
+    public  String editPart(@RequestParam (required = false) Integer page, @PathVariable("id") int id, Model model,@RequestParam (required=false) String viewParam){
 
         Part part = this.partService.fingPartById(id);
 
 
-
         model.addAttribute("command", part);
 
+        String result= null;
 
-        List<Part> parts = partService.getAllParts();
+        List<Part> parts= null;
+
+        if (viewParam.equals("optionalparts")){
+            result="optionalparts";
+        parts = partService.getOptionalParts();}
+
+        if (viewParam.equals("requiredparts")){
+            result="requiredparts";
+        parts = partService.getRequiredParts();}
+
+        if (viewParam.equals("parts")){
+            result="parts";
+        parts = partService.getAllParts();}
+
 
         setPageHolder(model,page,parts);
 
         model.addAttribute("computerCount", partService.getComputerCount());
 
-        return "parts";
+        return result;
     }
 
     @RequestMapping(value = "/search",method = RequestMethod.POST)
