@@ -7,7 +7,7 @@
 
 <html>
 <head>
-    <title>Library</title>
+    <title>Warehouse</title>
 
     <style type="text/css">
         .tg {

@@ -1,6 +1,6 @@
 package net.proselyte.springmvc.dao;
 
-import net.proselyte.springmvc.model.Book;
+
 import net.proselyte.springmvc.model.Part;
 
 import java.util.List;

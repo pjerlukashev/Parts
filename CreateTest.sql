@@ -6,7 +6,7 @@ USE test;
 
 create table parts
 (
-	id int(8) NOT NULL PRIMARY KEY,
+	id int(8) NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	partName varchar(100),
   quantity int,
 	isRequired tinyint(4)
