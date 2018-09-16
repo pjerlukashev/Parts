@@ -10,11 +10,13 @@
     <title>Library</title>
 
     <style type="text/css">
+
+
         .tg {
             border-collapse: collapse;
             border-spacing: 0;
             border-color: #20a088;
-            margin-left: 75px;
+
         }
 
         .tg td {
@@ -50,16 +52,22 @@
             top: 100px;
             left:1000px;
         }
-        #pagination{
-            margin-left:75px;
+
+        #table{
+            position: absolute;
+            top:100px;
+            left:75px;
 
         }
+        #amount{color: red; display:inline-block; }
         #infoandreferences{
             position:absolute;
             top: 100px;
             left:500px;
 
         }
+
+
         .ii{
             font-size: 20px;
             color: #155654;
@@ -67,7 +75,7 @@
 
         h1{
             color: #035447;
-            margin-left:270px;
+            margin-left:350px;
         }
 
         h2{
@@ -109,12 +117,13 @@
     <p class="ii">There are no optional parts in stock! <br/> Enter part information in the form to add computer part.</p>
 </c:if>
 
+<div id="table">
 <c:if test="${!empty listParts}">
 
     <table class="tg">
 
         <tr>
-            <th>Title</th>
+            <th>Part name</th>
             <th>Quantity</th>
             <th>Is required</th>
             <th>Edit</th>
@@ -134,7 +143,7 @@
 
     </table>
 
-<div id="pagination">
+
 
     <div class="mycss2">
         <p >Pages: </p>
@@ -202,7 +211,7 @@
                 <td>
                     <form:label path="partName" cssClass="mycss2">
 
-                        <spring:message text="partName"/>
+                        <spring:message text="Part name"/>
                     </form:label>
                 </td>
                 <td>
@@ -214,7 +223,7 @@
                 <td>
                     <form:label path="quantity" cssClass="mycss2">
 
-                        <spring:message text="quantity"/>
+                        <spring:message text="Quantity"/>
                     </form:label>
                 </td>
                 <td>
@@ -227,7 +236,7 @@
                 <td>
                     <form:label path="isRequired" cssClass="mycss2">
 
-                        <spring:message text="isRequired"/>
+                        <spring:message text="Is part required"/>
                     </form:label>
                 </td>
                 <td>
@@ -263,7 +272,7 @@
 
     </form:form>
 
-    <h2 >Search a part by title:</h2>
+    <h2 >Search a part by name:</h2>
 
     <c:url value="/search" var="searchAction" >
         <c:param name="page" value="${page}"/>
@@ -281,7 +290,7 @@
     <br/>
 
     <c:if test="${computerCount!=0}">
-        <h2 class="mycss2"><c:out value="You can assemble ${computerCount} computers"  /></h2>
+      <h2 class="mycss2">You can assemble <div id="amount"><c:out  value=" ${computerCount}"  /></div> computers</h2>
 
     </c:if>
 

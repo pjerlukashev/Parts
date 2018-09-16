@@ -98,6 +98,8 @@ public class PartsController {
 
         setPageHolder(model,page);
 
+
+
         model.addAttribute("part",part);
         return result;
     }
@@ -114,6 +116,7 @@ public class PartsController {
             page = 1;
 
         model.addAttribute("page", page);
+        
 
         if(page>pagedListHolder.getPageCount()){
             pagedListHolder.setPage(page);

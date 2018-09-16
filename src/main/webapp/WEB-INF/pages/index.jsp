@@ -27,7 +27,7 @@
         }
         h3{
             color: #085a4b;
-            margin-left:570px;
+            margin-left:600px;
         }
     </style>
 </head>

@@ -13,7 +13,9 @@
     border-collapse: collapse;
     border-spacing: 0;
     border-color: #20a088;
-    margin-left: 75px;
+  position: absolute;
+      top:150px;
+      left: 550px;
     }
 
     .tg td {
@@ -52,7 +54,7 @@
 
     h2{
         color: #085a4b;
-        margin-left:400px;
+        margin-left:550px;
     }
     a{
         color: #328072;
