@@ -210,7 +210,9 @@
             <td>
 
                 <form:input path="partName" cssClass="mycss" />
+
             </td>
+
         </tr>
         <tr>
             <td>
@@ -222,6 +224,7 @@
             <td>
 
                 <form:input path="quantity" cssClass="mycss" />
+
             </td>
         </tr>
 
@@ -233,8 +236,8 @@
                 </form:label>
             </td>
             <td>
-
                 <form:input path="isRequired"  cssClass="mycss"/>
+
             </td>
 
         </tr>

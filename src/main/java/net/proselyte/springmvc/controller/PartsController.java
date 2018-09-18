@@ -10,9 +10,12 @@ import org.springframework.beans.support.PagedListHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -32,10 +35,12 @@ public class PartsController {
     }
 
     @RequestMapping(value = "/addPart", method = RequestMethod.POST)
-    public String addPart(@ModelAttribute("mvc-dispatcher") Part part,
+    public String addPart(@Valid @ModelAttribute("mvc-dispatcher")  Part part, BindingResult bindingResult,
                           ModelMap model, @RequestParam(required=false) Integer page, @RequestParam (required=false) String viewParam) {
 
         String result= null;
+
+        model.addAttribute("page", page);
 
         if (viewParam.equals("optionalparts"))
             result="redirect:/optionalparts";
@@ -46,9 +51,11 @@ public class PartsController {
         if (viewParam.equals("parts"))
             result="redirect:/parts";
 
+        if(bindingResult.hasErrors()){
 
-        model.addAttribute("page", page);
+            return result;
 
+        }
         if (part.getId()==0) {
             partService.createPart(part);
         } else

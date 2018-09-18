@@ -3,7 +3,10 @@ package net.proselyte.springmvc.model;
 
 import org.hibernate.annotations.Proxy;
 
+
+
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 @Entity
 @Proxy(lazy=false)
@@ -14,10 +17,16 @@ public class Part {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @NotBlank (message = "Part name should not be blank")
+    @Size(min=2, max=50, message= "Part name should be between 2 and 50 characters long")
 private String partName;
 
+    @Min(0)
+    @Max(1)
 private int isRequired;
 
+    @Min(0)
+    @Max(1000000)
 private int quantity;
 
     public Part(int id, String partName, int isRequired, int quantuty) {
