@@ -298,7 +298,7 @@
 <br/>
 <br/>
 
-    <a href="/"  class="mycss2"  >Back to main page </a> </h2>
+      <a href="<c:url value='/'/>"  class="mycss2"  >Back to main page </a></h2>
 </div>
 
 

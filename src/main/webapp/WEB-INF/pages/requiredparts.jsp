@@ -294,7 +294,7 @@
        <h2> <a href="<c:url value='/parts'> </c:url>" class="mycss2">Show all parts</a>
         <br/>
         <br/>
-           <a href="/"  class="mycss2"  >Back to main page </a></h2>
+           <a href="<c:url value='/'/>"  class="mycss2"  >Back to main page </a></h2>
 </div>
 
 

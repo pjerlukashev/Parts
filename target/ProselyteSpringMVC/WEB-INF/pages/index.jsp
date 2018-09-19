@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -35,6 +36,7 @@
 
 <h1>Welcome to warehouse!</h1>
 <br/>
-  <h3><a href="/parts">View part list</a></h3>
+
+  <h3><a href="<c:url value='/parts'/>">View part list</a></h3>
 </body>
 </html>
